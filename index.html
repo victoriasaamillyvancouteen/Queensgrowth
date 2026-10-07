@@ -11,7 +11,7 @@ body{background:var(--bg);color:var(--ink);font:16px/1.55 "Helvetica Neue",Arial
 h1,h2,h3{font-weight:700;letter-spacing:-.03em;line-height:.98;text-transform:uppercase}
 .serif{font-family:Georgia,"Times New Roman",serif;font-style:italic;text-transform:none;font-weight:400;letter-spacing:0}
 a{color:inherit}.wrap{max-width:1200px;margin:auto;padding:0 22px}
-nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px 22px;padding-top:calc(14px + env(safe-area-inset-top,0px));background:linear-gradient(#090A0Cdd,transparent)}
+nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px 22px;padding-top:calc(14px + env(safe-area-inset-top,0px));background:rgba(9,10,12,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .logo{font-weight:700;letter-spacing:-.04em;font-size:20px;text-decoration:none}.logo b{color:var(--l)}
 nav .l{display:flex;gap:22px;align-items:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 nav .l a{text-decoration:none}@media(max-width:760px){nav .l a:not(.cta){display:none}}
@@ -32,10 +32,10 @@ nav .l a{text-decoration:none}@media(max-width:760px){nav .l a:not(.cta){display
 section{padding:110px 0}
 .eyebrow{font-size:11px;letter-spacing:.2em;color:var(--l);text-transform:uppercase;margin-bottom:18px}
 #worlds{padding:0}.wd{display:grid;grid-template-columns:1fr 1fr}@media(max-width:760px){.wd{grid-template-columns:1fr}}
-.world{min-height:78vh;padding:60px 28px;display:flex;flex-direction:column;justify-content:flex-end;text-align:left;border:0;font:inherit;cursor:pointer;position:relative;overflow:hidden;color:inherit}
+.world{min-height:0;padding:60px 28px;display:flex;flex-direction:column;justify-content:flex-start;text-align:left;border:0;font:inherit;cursor:pointer;position:relative;overflow:hidden;color:inherit}
 .w1{background:radial-gradient(circle at 50% 30%,#4a4237 0,#1d1b19 60%,#0c0c0d 100%);color:#F4F3EF}
 .w2{background:radial-gradient(circle at 70% 25%,#2a3a10 0,#15171A 55%,#090A0C 100%)}
-.world h2{font-size:clamp(34px,5vw,64px)}.world p{max-width:340px;margin:14px 0 22px}
+.world h2{font-size:clamp(34px,4vw,56px);min-height:2.05em}.world p{max-width:340px;margin:14px 0 22px}
 .orb{position:absolute;top:10%;right:10%;width:34vmin;height:34vmin;border-radius:50%;transition:transform .5s}
 .w1 .orb{background:radial-gradient(circle at 35% 30%,#fff,#ffffff66 40%,#9aa0a8 100%);box-shadow:inset 0 0 40px #fff,0 30px 60px #0003;border-radius:38% 38% 50% 50%}
 .w2 .orb{background:radial-gradient(circle at 35% 30%,#efffb0,#D5FF55 35%,#4a6a0a 100%);box-shadow:0 0 90px #D5FF5544;animation:morph 7s infinite alternate ease-in-out}
@@ -73,7 +73,7 @@ footer{border-top:1px solid #fff2;padding:60px 0 40px;font-size:13px;color:var(-
 footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}@media(max-width:760px){footer .wrap{grid-template-columns:1fr}}
 footer a{display:block;text-decoration:none;margin:4px 0}
 .hp{position:absolute;left:-9999px}
-.orb3d{position:absolute;left:0;top:0;width:100%;height:60%;pointer-events:none}.logo,nav .cta{white-space:nowrap}@media(max-width:560px){nav .cta[data-ev=nav_cta]{display:none}}
+.orb3d{position:relative;display:block;width:100%;height:clamp(260px,38vh,400px);flex:none;margin-bottom:18px;pointer-events:none}.logo,nav .cta{white-space:nowrap}@media(max-width:560px){nav .cta[data-ev=nav_cta]{display:none}}
 .hk{padding:86px 22px 0;max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2;margin-bottom:0}.hk.eyebrow{margin-bottom:0}
 .btn{background:var(--l)}.btn.o{background:none}.btn:not(.o):hover{background:#fff;color:#090A0C}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}.chips span{border:1px solid #fff3;padding:6px 12px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--s)}
@@ -83,6 +83,21 @@ footer a{display:block;text-decoration:none;margin:4px 0}
 .micro{font-size:12px;color:var(--s);margin-top:12px}
 #stk{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:30;text-align:center;box-shadow:0 10px 30px #000b;display:none}#stk.off{display:none!important}
 @media(max-width:760px){#stk{display:block}footer{padding-bottom:100px}}
+@media(min-width:761px){.world{min-height:max(78vh,760px)}.world h2{font-size:clamp(30px,3.4vw,52px)}.orb3d{height:calc(100% - 440px);min-height:260px}}
+@media(min-width:1000px){#hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-rows:auto auto;align-content:center;min-height:100svh;padding:70px 0 3vh}
+#hero .hk{grid-column:1;grid-row:1;align-self:end;margin:0 0 14px;max-width:none;width:auto;padding:0 22px 0 max(22px,calc((100vw - 1156px)/2))}
+#hero .wrap{grid-column:1;grid-row:2;margin:0;max-width:none;width:auto;padding:0 22px 0 max(22px,calc((100vw - 1156px)/2))}
+#c{grid-column:2;grid-row:1/3;align-self:center;height:calc(100svh - 90px);min-height:520px;max-height:860px;margin-top:0}
+#hero h1{font-size:clamp(40px,4.4vw,72px);max-width:12ch}}
+.world{min-height:0!important}.world .orb3d{position:relative!important;left:auto!important;top:auto!important;width:100%!important;height:auto!important;flex:1 1 340px;min-height:340px!important}.world .eyebrow,.world h2,.world p,.world .cta{position:relative;z-index:1}
+@media(min-width:761px) and (max-width:1100px){.world{padding:40px 22px}.world h2{font-size:clamp(28px,4.2vw,48px)}}
+@media(min-width:1000px){
+#hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);grid-template-areas:"k c" "t c";grid-template-rows:auto 1fr;align-content:center;column-gap:16px;padding:96px 0 5vh}
+#hero .hk{grid-area:k;align-self:end;max-width:none;margin:0;padding:0 22px 0 max(22px,calc((100vw - 1200px)/2))}
+#hero .wrap{grid-area:t;align-self:start;max-width:none;margin:0;padding:0 22px 0 max(22px,calc((100vw - 1200px)/2))}
+#c{grid-area:c;height:min(78svh,720px);align-self:center}
+#hero h1{font-size:clamp(38px,4.2vw,64px);max-width:15ch;margin-top:14px}#hero p{max-width:460px}.btn{padding:15px 20px}
+.hud{right:22px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style></head><body>
 <nav><a class="logo" href="#hero">queens<b>growth</b></a><div class="l"><a href="#services">Services</a><a href="#method">Method</a><a href="#contact">Contact</a><a class="cta" href="#contact" data-ev="nav_cta">Start your project</a><button class="cta" id="lg" type="button" aria-label="Idioma / Language">EN</button></div></nav>
